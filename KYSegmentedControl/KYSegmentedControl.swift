@@ -258,6 +258,10 @@ open class KYSegmentedControl: UIControl {
         self.configureViews()
     }
     
+    open func selectSegment(index: Int, animated: Bool) {
+        self.moveTo(index: index, animated: animated)
+    }
+    
     // MARK: - Private functions
     // MARK: View Configuration
     private func configureViews() {
@@ -277,6 +281,7 @@ open class KYSegmentedControl: UIControl {
         self.sliderView.cornerRadius = sliderView.bounds.height/2
         
         self.selectedContainerView.layer.mask = sliderView.sliderMaskView.layer
+        self.layoutIfNeeded()
     }
     
     // MARK: Gesture
@@ -346,8 +351,7 @@ open class KYSegmentedControl: UIControl {
             }
         }
         
-        self.moveTo(index: index)
-        self.delegate?.didSegmentSelected(index: index)
+        self.moveTo(index: index, animated: true)
     }
     
     private func segmentIndex(for point: CGPoint) -> Int {
@@ -368,17 +372,26 @@ open class KYSegmentedControl: UIControl {
         return segment.superview?.convert(segment.frame, to: segment.superview)
     }
     
-    open func moveTo(index: Int) {
+    open func moveTo(index: Int, animated: Bool) {
         let segment = self.segments[index]
         
         guard let frame = self.convertSegmentFrame(segment: segment) else {
             fatalError("Segment frame not found")
         }
         
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear) {
-            self.sliderView.frame.origin.x = frame.origin.x + Constants.sliderMargin
+        let sliderWidth = self.frame.width/CGFloat(self.numberOfSegments)
+        let centerPoint = CGPoint(x: frame.origin.x + (frame.size.width / 2),
+                                  y: frame.origin.y + (frame.size.height / 2))
+        self.sliderView.frame.size = CGSize(width: sliderWidth - Constants.sliderMargin*2, height: Constants.height - Constants.sliderMargin*2)
+        
+        let duration = animated ? 0.2 : 0.0
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear) {
+            self.sliderView.center = centerPoint
         }
         
         self.selectedSegmentIndex = index
+        self.delegate?.didSegmentSelected(index: index)
+        
+        
     }
 }
