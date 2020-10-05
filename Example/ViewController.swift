@@ -25,6 +25,4 @@ class ViewController: UIViewController {
         segmentedControl.center = self.view.center        
     }
 
-
 }
-

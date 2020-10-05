@@ -167,6 +167,7 @@
 				28BC80C6252608E000D36D4D /* Frameworks */,
 				28BC80C7252608E000D36D4D /* Resources */,
 				28BC80E4252608F100D36D4D /* Embed Frameworks */,
+				28B0371C252B17B30000AD3C /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -234,6 +235,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28B0371C252B17B30000AD3C /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		282AA7012525F02A007D9716 /* Sources */ = {
@@ -469,7 +491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ky-ios.KYSegmentedControl.Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ky-ios.KYSegmentedControl-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,7 +510,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ky-ios.KYSegmentedControl.Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ky-ios.KYSegmentedControl-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

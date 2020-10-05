@@ -23,31 +23,29 @@ open class KYSegmentedControl: UIControl {
         static let highlightFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
         static let isSliderShadowHidden: Bool = true
     }
-    
+
     class SegmentLabel: UILabel {
         var topInset: CGFloat = 0.0
         var bottomInset: CGFloat = 0.0
         var leftInset: CGFloat = 8.0
         var rightInset: CGFloat = 8.0
-        
+
         override func drawText(in rect: CGRect) {
             let insets = UIEdgeInsets(top: self.topInset,
                                       left: self.leftInset,
                                       bottom: self.bottomInset,
                                       right: self.rightInset)
             super.drawText(in: rect.inset(by: insets))
-           }
+        }
 
-           override var intrinsicContentSize: CGSize {
-              get {
-                 var contentSize = super.intrinsicContentSize
-                 contentSize.height += topInset + bottomInset
-                 contentSize.width += leftInset + rightInset
-                 return contentSize
-              }
-           }
+        override var intrinsicContentSize: CGSize {
+            var contentSize = super.intrinsicContentSize
+            contentSize.height += topInset + bottomInset
+            contentSize.width += leftInset + rightInset
+            return contentSize
+        }
     }
-    
+
     class SliderView: UIView {
         fileprivate let sliderMaskView = UIView()
 
@@ -308,7 +306,18 @@ open class KYSegmentedControl: UIControl {
             self.correction = panGesture.location(in: self.sliderView).x - self.sliderView.frame.width/2
         case .changed:
             let location = panGesture.location(in: self)
-            self.sliderView.center.x = location.x - self.correction
+            
+            let targetX = location.x - self.correction
+            let minX = Constants.sliderMargin + self.sliderView.frame.width/2
+            let maxX = self.containerView.bounds.width - Constants.sliderMargin - self.sliderView.frame.width/2
+            
+            if targetX < minX {
+                self.sliderView.center.x = minX
+            } else if targetX > maxX {
+                self.sliderView.center.x = maxX
+            } else {
+                self.sliderView.center.x = targetX
+            }
         default:
             break
         }
@@ -345,9 +354,9 @@ open class KYSegmentedControl: UIControl {
         
         if let v = velocity {
             if v.x > 500 {
-                index = self.selectedSegmentIndex + 1
+                index = min(self.numberOfSegments - 1, self.selectedSegmentIndex + 1)
             } else if v.x < -500 {
-                index = self.selectedSegmentIndex - 1
+                index = max(0, self.selectedSegmentIndex - 1)
             }
         }
         
@@ -391,7 +400,5 @@ open class KYSegmentedControl: UIControl {
         
         self.selectedSegmentIndex = index
         self.delegate?.didSegmentSelected(index: index)
-        
-        
     }
 }
