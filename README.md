@@ -32,8 +32,6 @@ It's sample, just **drag** `KYSegmentedControl.swift` into your project!
 
 ## Usage
 
----
-
 ```swift
 let segmentedControl = KYSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 16, height: 44))
 segmentedControl.setSegmentItems(["Years", "Months", "Days", "All Photos"])
