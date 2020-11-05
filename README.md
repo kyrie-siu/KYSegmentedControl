@@ -1,33 +1,27 @@
 # KYSegmentedControl
 
----
 
 `KYSegmentedControl` is beautiful, light, customizable replacement for `UISegmentedControl` written in Swift
 
 ## Preview
 
----
 
 ## Requirements
 
----
 
 - iOS 11.0+
 - Xcode 11+
 
 ## Installation
 
----
 
 ### Swift Package Manager
 
----
 
 **Coming Soon**
 
 ### CocoaPods
 
----
 
 **Coming Soon**
 
@@ -50,7 +44,6 @@ self.view.addSubview(segmentedControl)
 
 ## Appearance
 
----
 
 `height`: the height of the segmented control
 
@@ -72,6 +65,5 @@ self.view.addSubview(segmentedControl)
 
 ## Support Me!
 
----
 
 - **Star** the repo ⭐⭐⭐
