@@ -9,6 +9,13 @@ import UIKit
 import KYSegmentedControl
 
 class ViewController: UIViewController {
+    
+    lazy var segmentedControl: KYSegmentedControl = {
+        let segmentedControl = KYSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 16, height: 44))
+        segmentedControl.setSegmentItems(["Years", "Months", "Days", "All Photos"])
+
+        return segmentedControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +25,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let segmentedControl = KYSegmentedControl(frame: CGRect(x: 0, y: 0, width: 260, height: 500))
-        segmentedControl.setSegmentItems(["Testing1", "Testing2", "Testing3", "Testing4"])
+        self.view.addSubview(self.segmentedControl)
+        self.segmentedControl.center = self.view.center
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        self.view.addSubview(segmentedControl)
-        segmentedControl.center = self.view.center        
+        self.segmentedControl.center = self.view.center
     }
 
 }

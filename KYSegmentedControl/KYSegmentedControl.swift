@@ -16,19 +16,19 @@ open class KYSegmentedControl: UIControl {
         static let height: CGFloat = 36
         static let defaultTextColor: UIColor = .darkText
         static let highlightTextColor: UIColor = .white
-        static let backgroundColor: UIColor = .systemGroupedBackground
-        static let sliderColor: UIColor = .red
-        static let sliderMargin: CGFloat = 3
-        static let font: UIFont = UIFont.systemFont(ofSize: 15, weight: .regular)
-        static let highlightFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        static let backgroundColor: UIColor = .groupTableViewBackground
+        static let sliderColor: UIColor = #colorLiteral(red: 0.1607843137, green: 0.5019607843, blue: 0.7254901961, alpha: 1)
+        static let sliderMargin: CGFloat = 4
+        static let font: UIFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        static let highlightFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
         static let isSliderShadowHidden: Bool = true
     }
 
     class SegmentLabel: UILabel {
         var topInset: CGFloat = 0.0
         var bottomInset: CGFloat = 0.0
-        var leftInset: CGFloat = 8.0
-        var rightInset: CGFloat = 8.0
+        var leftInset: CGFloat = 12.0
+        var rightInset: CGFloat = 12.0
 
         override func drawText(in rect: CGRect) {
             let insets = UIEdgeInsets(top: self.topInset,
@@ -40,8 +40,8 @@ open class KYSegmentedControl: UIControl {
 
         override var intrinsicContentSize: CGSize {
             var contentSize = super.intrinsicContentSize
-            contentSize.height += topInset + bottomInset
-            contentSize.width += leftInset + rightInset
+            contentSize.height += self.topInset + self.bottomInset
+            contentSize.width += self.leftInset + self.rightInset
             return contentSize
         }
     }
@@ -391,7 +391,7 @@ open class KYSegmentedControl: UIControl {
         let sliderWidth = self.frame.width/CGFloat(self.numberOfSegments)
         let centerPoint = CGPoint(x: frame.origin.x + (frame.size.width / 2),
                                   y: frame.origin.y + (frame.size.height / 2))
-        self.sliderView.frame.size = CGSize(width: sliderWidth - Constants.sliderMargin*2, height: Constants.height - Constants.sliderMargin*2)
+        self.sliderView.frame.size = CGSize(width: sliderWidth - Constants.sliderMargin * 2, height: Constants.height - Constants.sliderMargin * 2)
         
         let duration = animated ? 0.2 : 0.0
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear) {
