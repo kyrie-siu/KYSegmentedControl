@@ -4,6 +4,7 @@
 `KYSegmentedControl` is beautiful, light, customizable replacement for `UISegmentedControl` written in Swift
 
 ## Preview
+![alt text](https://github.com/kyrie-siu/KYSegmentedControl/blob/master/preview.gif?raw=true)
 
 
 ## Requirements
