@@ -4,7 +4,6 @@
 `KYSegmentedControl` is beautiful, light, customizable replacement for `UISegmentedControl` written in Swift
 
 ## Preview
-![alt text](https://github.com/kyrie-siu/KYSegmentedControl/blob/master/preview.gif?raw=true)
 
 
 ## Requirements
@@ -31,6 +30,8 @@
 It's sample, just **drag** `KYSegmentedControl.swift` into your project!
 
 ## Usage
+
+---
 
 ```swift
 let segmentedControl = KYSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 16, height: 44))
