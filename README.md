@@ -18,7 +18,11 @@
 
 ### Swift Package Manager
 
-**Coming Soon**
+'''
+dependencies: [
+    .package(url: "https://https://github.com/kyrie-siu/KYSegmentedControl.git", .branch("master"))
+]
+'''
 
 ### CocoaPods
 
