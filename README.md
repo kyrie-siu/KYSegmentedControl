@@ -5,6 +5,7 @@
 
 ## Preview
 
+![Preview](/preview.gif)
 
 ## Requirements
 
@@ -16,7 +17,6 @@
 
 
 ### Swift Package Manager
-
 
 **Coming Soon**
 
