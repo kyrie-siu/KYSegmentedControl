@@ -1,12 +1,11 @@
 //
 //  ViewController.swift
-//  Example
+//  App
 //
 //  Created by SIU Suet Long on 1/10/2020.
 //
 
 import UIKit
-import KYSegmentedControl
 
 class ViewController: UIViewController {
     
